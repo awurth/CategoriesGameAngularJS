@@ -1,0 +1,26 @@
+<div class="ui container">
+  <h1 class="ui header">Subjects <a ui-sref="subjects.add" class="ui teal right floated circular button">Add subject</a></h1>
+  <table class="ui table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th class="right aligned">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="subject in Subjects.subjects">
+        <td>{{ $index + 1 }}</td>
+        <td>{{ subject.name }}</td>
+        <td class="right aligned">
+          <a ui-sref="subjects.edit({ id: subject.id })" class="mini ui orange circular labeled icon button">
+            <i class="edit icon"></i> Edit
+          </a>
+          <button ng-click="Subjects.deleteSubject(subject)" class="mini ui red circular labeled icon button">
+            <i class="trash icon"></i> Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,11 @@
+<div class="ui container">
+  <h1 class="ui center aligned header">Add a subject</h1>
+  <form class="ui form error">
+    <div class="field" field-error="AddSubject.errors.name">
+      <label for="name">Name</label>
+      <input ng-model="AddSubject.subject.name" type="text" id="name">
+    </div>
+    <form-errors errors="AddSubject.errors.name"></form-errors>
+    <input ng-click="AddSubject.save()" type="submit" class="ui teal circular button" value="Create">
+  </form>
+</div>
