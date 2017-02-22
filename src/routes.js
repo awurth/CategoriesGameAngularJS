@@ -6,6 +6,7 @@ import SubjectsController from 'app/subject/subjects.controller'
 import AddSubjectController from 'app/subject/subjects.add.controller'
 import EditSubjectController from 'app/subject/subjects.edit.controller'
 import GamesController from 'app/game/games.controller'
+import CreateGameController from 'app/game/games.create.controller'
 
 export default function route ($stateProvider) {
   $stateProvider
@@ -58,5 +59,11 @@ export default function route ($stateProvider) {
       template: require('app/game/games.html'),
       controller: GamesController,
       controllerAs: 'Games'
+    })
+    .state('games.create', {
+      url: '/new',
+      template: require('app/game/games.create.html'),
+      controller: CreateGameController,
+      controllerAs: 'CreateGame'
     })
 }

@@ -1,0 +1,13 @@
+<div class="ui container">
+  <h1 class="ui header">Create a new game</h1>
+  <form class="ui form error">
+    <div class="field" field-error="CreateGame.errors.subjects">
+      <label for="subjects">Subjects</label>
+      <select ng-model="CreateGame.game.subjects" id="subjects" class="ui fluid dropdown" ui-dropdown multiple>
+        <option ng-repeat="subject in CreateGame.subjects" ng-value="subject.id">{{ subject.name }}</option>
+      </select>
+    </div>
+    <form-errors errors="CreateGame.errors.subjects"></form-errors>
+    <input ng-click="CreateGame.create()" type="submit" class="ui teal circular button" value="Create">
+  </form>
+</div>
