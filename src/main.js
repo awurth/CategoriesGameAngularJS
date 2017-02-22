@@ -15,6 +15,7 @@ import Game from 'app/game/game'
 import TopbarDirective from 'app/topbar/topbar.directive'
 import FormErrorsDirective from 'app/common/form-errors.directive'
 import FieldErrorDirective from 'app/common/field-error.directive'
+import UIDropdownDirective from 'app/common/ui.dropdown.directive'
 
 export default angular.module('app', [resource, router])
   .constant('API', {
@@ -29,3 +30,4 @@ export default angular.module('app', [resource, router])
   .directive('topbar', TopbarDirective)
   .directive('formErrors', FormErrorsDirective)
   .directive('fieldError', FieldErrorDirective)
+  .directive('uiDropdown', UIDropdownDirective)
