@@ -5,6 +5,7 @@ import RegisterController from 'app/authentication/register.controller'
 import SubjectsController from 'app/subject/subjects.controller'
 import AddSubjectController from 'app/subject/subjects.add.controller'
 import EditSubjectController from 'app/subject/subjects.edit.controller'
+import GamesController from 'app/game/games.controller'
 
 export default function route ($stateProvider) {
   $stateProvider
@@ -47,5 +48,15 @@ export default function route ($stateProvider) {
       template: require('app/subject/subjects.edit.html'),
       controller: EditSubjectController,
       controllerAs: 'EditSubject'
+    })
+    .state('games', {
+      abstract: true,
+      url: '/games'
+    })
+    .state('games.all', {
+      url: '',
+      template: require('app/game/games.html'),
+      controller: GamesController,
+      controllerAs: 'Games'
     })
 }

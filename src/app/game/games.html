@@ -1,0 +1,23 @@
+<div class="ui container">
+  <h1 class="ui header">Games</h1>
+  <table class="ui table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Subjects</th>
+        <th class="right aligned">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="game in Games.games">
+        <td>{{ game.id }}</td>
+        <td>{{ Games.formatSubjects(game.subjects) }}</td>
+        <td class="right aligned">
+          <button ng-click="Games.deleteGame(game)" class="mini ui red circular labeled icon button">
+            <i class="trash icon"></i> Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -10,6 +10,8 @@ import AuthService from 'app/authentication/authentication.service'
 import User from 'app/user/user'
 
 import Subject from 'app/subject/subject'
+import Game from 'app/game/game'
+
 import TopbarDirective from 'app/topbar/topbar.directive'
 import FormErrorsDirective from 'app/common/form-errors.directive'
 import FieldErrorDirective from 'app/common/field-error.directive'
@@ -23,6 +25,7 @@ export default angular.module('app', [resource, router])
   .service('AuthService', AuthService)
   .config(config)
   .factory('Subject', Subject)
+  .factory('Game', Game)
   .directive('topbar', TopbarDirective)
   .directive('formErrors', FormErrorsDirective)
   .directive('fieldError', FieldErrorDirective)
