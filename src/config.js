@@ -1,4 +1,4 @@
-import route from './routes'
+import route from 'routes'
 import JWTInterceptor from 'app/authentication/jwt.interceptor'
 
 export default function config ($httpProvider, $stateProvider, $urlRouterProvider, $locationProvider) {

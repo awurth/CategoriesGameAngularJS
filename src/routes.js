@@ -1,5 +1,5 @@
-import GuestMiddleware from 'app/middleware/guest.middleware'
-import AuthMiddleware from 'app/middleware/auth.middleware'
+import GuestMiddleware from 'middleware/guest.middleware'
+import AuthMiddleware from 'middleware/auth.middleware'
 
 import HomeController from 'app/home/home.controller'
 import LoginController from 'app/authentication/login.controller'

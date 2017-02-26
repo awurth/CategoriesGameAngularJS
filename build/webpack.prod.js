@@ -1,17 +1,32 @@
 let webpack = require('webpack')
-let config = require('./webpack.base')
+let merge = require('webpack-merge')
+let webpackConfig = require('./webpack.base')
 let ExtractTextPlugin = require('extract-text-webpack-plugin')
-let extractCSS = new ExtractTextPlugin('bundle.css')
 
-config.plugins = config.plugins.concat([
-  extractCSS,
-  new webpack.optimize.UglifyJsPlugin({
-    comments: false
+webpackConfig.module.rules[0] = {
+  test: /\.s?css$/,
+  use: ExtractTextPlugin.extract({
+    use: ['css-loader', 'sass-loader'],
+    fallback: 'style-loader'
   })
-])
+}
 
-let cssLoaders = config.module.loaders[0].loaders
-config.module.loaders[0].loaders = null
-config.module.loaders[0].loader = extractCSS.extract(cssLoaders.slice(1, 10))
-
-module.exports = config
+module.exports = merge(webpackConfig, {
+  output: {
+    filename: '[name].[chunkhash].js'
+  },
+  devtool: 'source-map',
+  plugins: [
+    // extract css into its own file
+    new ExtractTextPlugin({
+      filename: '[name].[contenthash].css'
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      sourceMap: true,
+      comments: false
+    })
+  ]
+})

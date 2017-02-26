@@ -4,7 +4,7 @@ import angular from 'angular'
 import resource from 'angular-resource'
 import router from 'angular-ui-router'
 
-import config from './config'
+import config from 'config'
 import JWTService from 'app/authentication/jwt.service'
 import AuthService from 'app/authentication/authentication.service'
 import User from 'app/user/user'
@@ -33,11 +33,8 @@ export default angular.module('app', [resource, router])
   .directive('uiDropdown', UIDropdownDirective)
   .run(['$transitions', $transitions => {
     $transitions.onSuccess({}, trans => {
-      let JWTService = trans.injector().get('JWTService')
-
-      if (JWTService.getAccessToken()) {
-        let AuthService = trans.injector().get('AuthService')
-        AuthService.check()
+      if (trans.injector().get('JWTService').getAccessToken()) {
+        trans.injector().get('AuthService').check()
       }
     })
   }])

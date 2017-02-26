@@ -4,8 +4,6 @@ let express = require('express')
 let config = require('./config')
 let opn = require('opn')
 
-webpackConfig.entry.app.unshift('./build/dev-client.js')
-
 let app = express()
 let compiler = webpack(webpackConfig)
 
