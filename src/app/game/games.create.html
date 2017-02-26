@@ -7,7 +7,7 @@
         <option ng-repeat="subject in CreateGame.subjects" ng-value="subject.id">{{ subject.name }}</option>
       </select>
     </div>
-    <form-errors errors="CreateGame.errors.subjects"></form-errors>
+    <field-errors errors="CreateGame.errors.subjects"></field-errors>
     <input ng-click="CreateGame.create()" type="submit" class="ui teal circular button" value="Create">
   </form>
 </div>
