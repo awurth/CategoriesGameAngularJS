@@ -11,7 +11,7 @@ export default class RegisterController {
     this.AuthService.register(this.user).then(() => {
       this.$state.go('login')
     }, response => {
-      console.log(response)
+      this.errors = response.data
     })
   }
 }

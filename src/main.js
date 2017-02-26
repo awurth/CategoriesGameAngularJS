@@ -13,8 +13,8 @@ import Subject from 'app/subject/subject'
 import Game from 'app/game/game'
 
 import TopbarDirective from 'app/topbar/topbar.directive'
-import FormErrorsDirective from 'app/common/form-errors.directive'
 import FieldErrorDirective from 'app/common/field-error.directive'
+import FieldErrorsDirective from 'app/common/field-errors.directive'
 import UIDropdownDirective from 'app/common/ui.dropdown.directive'
 
 export default angular.module('app', [resource, router])
@@ -28,6 +28,16 @@ export default angular.module('app', [resource, router])
   .factory('Subject', Subject)
   .factory('Game', Game)
   .directive('topbar', TopbarDirective)
-  .directive('formErrors', FormErrorsDirective)
   .directive('fieldError', FieldErrorDirective)
+  .directive('fieldErrors', FieldErrorsDirective)
   .directive('uiDropdown', UIDropdownDirective)
+  .run(['$transitions', $transitions => {
+    $transitions.onSuccess({}, trans => {
+      let JWTService = trans.injector().get('JWTService')
+
+      if (JWTService.getAccessToken()) {
+        let AuthService = trans.injector().get('AuthService')
+        AuthService.check()
+      }
+    })
+  }])

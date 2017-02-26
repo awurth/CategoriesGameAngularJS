@@ -11,7 +11,7 @@ export default class LoginController {
     this.AuthService.login(this.user).then(() => {
       this.$state.go('home')
     }, response => {
-      console.log(response)
+      this.errors = response.data
     })
   }
 }
