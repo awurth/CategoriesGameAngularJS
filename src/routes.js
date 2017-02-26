@@ -70,6 +70,7 @@ export default function route ($stateProvider) {
       url: '/new',
       template: require('app/game/games.create.html'),
       controller: CreateGameController,
-      controllerAs: 'CreateGame'
+      controllerAs: 'CreateGame',
+      onEnter: AuthMiddleware
     })
 }

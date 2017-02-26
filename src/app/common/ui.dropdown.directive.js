@@ -3,7 +3,9 @@ export default function UIDropdownDirective () {
   return {
     restrict: 'A',
     link: (scope, element) => {
-      element.dropdown()
+      if (typeof element.dropdown !== 'undefined') {
+        element.dropdown()
+      }
     }
   }
 }

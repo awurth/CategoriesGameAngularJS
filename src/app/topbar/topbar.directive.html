@@ -3,7 +3,7 @@
     <i class="game circular inverted icon"></i>
     Find The Words
   </a>
-  <div ng-if="!user" class="right menu">
+  <div ng-hide="user" class="right menu">
     <div class="item">
       <a ui-sref="login" class="ui circular button">Sign in</a>
     </div>
@@ -11,7 +11,7 @@
       <a ui-sref="register" class="ui teal circular button ">Sign up</a>
     </div>
   </div>
-  <div ng-if="user" class="right menu">
+  <div ng-show="user" class="right menu">
     <div class="ui dropdown item" ui-dropdown>
       {{ user.username }}
       <i class="dropdown icon"></i>
