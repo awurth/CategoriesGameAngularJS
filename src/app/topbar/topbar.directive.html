@@ -12,10 +12,14 @@
     </div>
   </div>
   <div ng-show="user" class="right menu">
+    <div class="item">
+      <a ui-sref="games.create" class="ui teal circular button">Play</a>
+    </div>
     <div class="ui dropdown item" ui-dropdown>
       {{ user.username }}
       <i class="dropdown icon"></i>
       <div class="menu">
+        <a ui-sref="account.games" class="item">My games</a>
         <a ng-click="logout()" class="item">Logout</a>
       </div>
     </div>
