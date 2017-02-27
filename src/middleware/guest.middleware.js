@@ -1,12 +1,12 @@
 
-export default function GuestMiddleware ($state, $rootScope) {
-  if ($rootScope.user) {
-    if ($state.current.abstract) {
+export default function GuestMiddleware ($state, AuthService) {
+  AuthService.check().then(() => {
+    if ($state.$current.parent.abstract) {
       $state.go('home')
     } else {
       $state.go($state.current)
     }
-  }
+  })
 }
 
-GuestMiddleware.$inject = ['$state', '$rootScope']
+GuestMiddleware.$inject = ['$state', 'AuthService']
