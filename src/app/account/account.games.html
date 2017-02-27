@@ -21,6 +21,9 @@
         </div>
       </td>
       <td class="right aligned">
+        <a ui-sref="games.play({ id: game.id })" class="mini ui teal circular labeled icon button">
+          <i class="chevron right icon"></i> Continue
+        </a>
         <button ng-click="AccountGames.deleteGame(game)" class="mini ui red circular labeled icon button">
           <i class="trash icon"></i> Delete
         </button>
