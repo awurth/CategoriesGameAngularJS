@@ -1,0 +1,31 @@
+<div class="ui container">
+  <h1 class="ui header">My games</h1>
+  <table class="ui table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Subjects</th>
+      <th>Date</th>
+      <th>Info</th>
+      <th class="right aligned">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="game in AccountGames.games">
+      <td>{{ $index + 1 }}</td>
+      <td>{{ AccountGames.formatSubjects(game.subjects) }}</td>
+      <td>{{ AccountGames.parseDate(game.created_at) | date:'dd/MM/yyyy' }}</td>
+      <td>
+        <div ng-if="game.user_id == user.id" class="ui green label">
+          <i class="user icon"></i> Owner
+        </div>
+      </td>
+      <td class="right aligned">
+        <button ng-click="AccountGames.deleteGame(game)" class="mini ui red circular labeled icon button">
+          <i class="trash icon"></i> Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

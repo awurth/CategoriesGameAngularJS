@@ -11,6 +11,7 @@ import User from 'app/user/user'
 
 import Subject from 'app/subject/subject'
 import Game from 'app/game/game'
+import UserGame from 'app/user/user.game'
 
 import TopbarDirective from 'app/topbar/topbar.directive'
 import FieldErrorDirective from 'app/common/field-error.directive'
@@ -27,6 +28,7 @@ export default angular.module('app', [resource, router])
   .config(config)
   .factory('Subject', Subject)
   .factory('Game', Game)
+  .factory('UserGame', UserGame)
   .directive('topbar', TopbarDirective)
   .directive('fieldError', FieldErrorDirective)
   .directive('fieldErrors', FieldErrorsDirective)

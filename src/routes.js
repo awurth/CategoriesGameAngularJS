@@ -9,6 +9,7 @@ import AddSubjectController from 'app/subject/subjects.add.controller'
 import EditSubjectController from 'app/subject/subjects.edit.controller'
 import GamesController from 'app/game/games.controller'
 import CreateGameController from 'app/game/games.create.controller'
+import AccountGamesController from 'app/account/account.games.controller'
 
 export default function route ($stateProvider) {
   $stateProvider
@@ -31,6 +32,17 @@ export default function route ($stateProvider) {
       controller: RegisterController,
       controllerAs: 'Register',
       onEnter: GuestMiddleware
+    })
+    .state('account', {
+      abstract: true,
+      url: '/account',
+      onEnter: AuthMiddleware
+    })
+    .state('account.games', {
+      url: '/games',
+      template: require('app/account/account.games.html'),
+      controller: AccountGamesController,
+      controllerAs: 'AccountGames'
     })
     .state('subjects', {
       abstract: true,
