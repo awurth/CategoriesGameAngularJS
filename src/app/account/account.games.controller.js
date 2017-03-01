@@ -1,8 +1,9 @@
 
 export default class AccountGamesController {
-  constructor (AuthService, UserGame) {
+  constructor (AuthService, UserGame, Game) {
     this.AuthService = AuthService
     this.UserGame = UserGame
+    this.Game = Game
 
     this.user = AuthService.getUser()
     this.loadGames()
@@ -28,10 +29,10 @@ export default class AccountGamesController {
   }
 
   deleteGame (game) {
-    this.UserGame.delete({ user_id: this.user.id, game_id: game.id }, () => {
+    this.Game.delete({ id: game.id }, () => {
       this.loadGames()
     })
   }
 }
 
-AccountGamesController.$inject = ['AuthService', 'UserGame']
+AccountGamesController.$inject = ['AuthService', 'UserGame', 'Game']
