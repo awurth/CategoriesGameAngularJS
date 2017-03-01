@@ -11,6 +11,7 @@ import User from 'app/user/user'
 
 import Subject from 'app/subject/subject'
 import Game from 'app/game/game'
+import GameRound from 'app/game/game.round'
 import UserGame from 'app/user/user.game'
 
 import TopbarDirective from 'app/topbar/topbar.directive'
@@ -20,7 +21,7 @@ import UIDropdownDirective from 'app/common/ui.dropdown.directive'
 
 export default angular.module('app', [resource, router])
   .constant('API', {
-    url: 'http://localhost/private/find-the-words/public/api'
+    url: 'http://localhost/private/find-the-words/public'
   })
   .factory('User', User)
   .service('JWTService', JWTService)
@@ -28,6 +29,7 @@ export default angular.module('app', [resource, router])
   .config(config)
   .factory('Subject', Subject)
   .factory('Game', Game)
+  .factory('GameRound', GameRound)
   .factory('UserGame', UserGame)
   .directive('topbar', TopbarDirective)
   .directive('fieldError', FieldErrorDirective)

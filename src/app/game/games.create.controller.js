@@ -1,7 +1,9 @@
 
 export default class CreateGameController {
-  constructor ($state, Game, Subject) {
+  constructor ($state, $resource, API, Game, Subject) {
     this.$state = $state
+    this.$resource = $resource
+    this.API = API
     this.Game = Game
     this.Subject = Subject
 
@@ -19,12 +21,14 @@ export default class CreateGameController {
   }
 
   create () {
-    this.Game.save(this.game, () => {
-      this.$state.go('home')
+    this.Game.save(this.game, (response, headers) => {
+      this.$resource(this.API.url + headers('Location')).get((game) => {
+        this.$state.go('games.play', { id: game.id })
+      })
     }, response => {
       this.errors = response.data
     })
   }
 }
 
-CreateGameController.$inject = ['$state', 'Game', 'Subject']
+CreateGameController.$inject = ['$state', '$resource', 'API', 'Game', 'Subject']
