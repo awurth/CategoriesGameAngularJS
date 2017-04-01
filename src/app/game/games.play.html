@@ -1,0 +1,24 @@
+<div class="game ui fluid container">
+  <form class="ui form">
+    <table ng-if="PlayGame.rounds.length" class="center aligned ui very compact teal striped celled table">
+      <thead>
+        <tr>
+          <th>Letter</th>
+          <th ng-repeat="subject in PlayGame.game.subjects">{{ subject.name }}</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="round in PlayGame.rounds">
+          <td>{{ round.letter }}</td>
+          <td ng-repeat="subject in PlayGame.game.subjects" ng-init="value = PlayGame.getValue(round.values, subject)">
+            <input type="text" ng-init="PlayGame.subjectsAnswers[$index] = value" ng-change="PlayGame.saveAnswer(round, subject, PlayGame.subjectsAnswers[$index])" ng-if="!round.finished" ng-model="PlayGame.subjectsAnswers[$index]">
+            <span ng-if="round.finished">{{ value }}</span>
+          </td>
+          <td><span ng-if="round.finished">0</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <button ng-click="PlayGame.createRound()" class="large ui teal fluid circular button">New round</button>
+  </form>
+</div>

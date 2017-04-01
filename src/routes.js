@@ -4,12 +4,16 @@ import AuthMiddleware from 'middleware/auth.middleware'
 import HomeController from 'app/home/home.controller'
 import LoginController from 'app/authentication/login.controller'
 import RegisterController from 'app/authentication/register.controller'
+
+import AccountGamesController from 'app/account/account.games.controller'
+
 import SubjectsController from 'app/subject/subjects.controller'
 import AddSubjectController from 'app/subject/subjects.add.controller'
 import EditSubjectController from 'app/subject/subjects.edit.controller'
+
 import GamesController from 'app/game/games.controller'
 import CreateGameController from 'app/game/games.create.controller'
-import AccountGamesController from 'app/account/account.games.controller'
+import PlayGameController from 'app/game/games.play.controller'
 
 export default function route ($stateProvider) {
   $stateProvider
@@ -84,5 +88,11 @@ export default function route ($stateProvider) {
       controller: CreateGameController,
       controllerAs: 'CreateGame',
       onEnter: AuthMiddleware
+    })
+    .state('games.play', {
+      url: '/:id',
+      template: require('app/game/games.play.html'),
+      controller: PlayGameController,
+      controllerAs: 'PlayGame'
     })
 }
